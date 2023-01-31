@@ -1,0 +1,15 @@
+.pg-authentication {
+  display: flex;
+
+  .left-box {
+    height: 100vh;
+    width: 50%;
+    background-color: var(--secondary-color);
+  }
+
+  .right-box {
+    height: 100vh;
+    width: 50%;
+    background-color: var(--primary-color);
+  }
+}
