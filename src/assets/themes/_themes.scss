@@ -1,8 +1,9 @@
 
 :root {
   --primary-color: #1d1c25;
-  --primary-color-2:  #24232F;
+  --primary-color-v2:  #24232F;
   --secondary-color: #00ff6a;
+  --tertiary-color: blue;
   --text-color: #eeebff;
   --text-color-2: #a2a0af;
   --text-color-3: #6f6e77;
@@ -11,8 +12,9 @@
 
 :root .light-theme {
   --primary-color: rgb(238, 238, 238);
-  --primary-color-2: white;
+  --primary-color-v2: white;
   --secondary-color: #00aeff;
+  --tertiary-color: blue;
   --text-color: #313131;
   --text-color-2: #505050;
   --text-color-3: #8d8d8d;
