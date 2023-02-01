@@ -1,23 +1,33 @@
 
 :root {
   --primary-color: rgb(0, 162, 255);
-  --primary-color-v2:  rgb(116, 204, 255);
+  --primary-color-v2:  rgb(96, 195, 252);
   --secondary-color: white;
-  --tertiary-color: rgb(187, 187, 187);
-  --text-color: #535353;
+  --tertiary-color: rgb(0, 39, 61);
+
+  --text-color: #e2e2e2;
   --text-color-2: #666666;
   --text-color-3: #6f6e77;
   --text-color-4: #404046;
+
+  --danger-color: red;
+  --alert-color: yellow;
+  --succes-color: green;
 }
 
-:root .light-theme {
-  --primary-color: rgb(238, 238, 238);
-  --primary-color-v2: white;
-  --secondary-color: #00aeff;
-  --tertiary-color: blue;
-  --text-color: #313131;
-  --text-color-2: #505050;
-  --text-color-3: #8d8d8d;
-  --text-color-4: #c9c9c9;
-}
+// :root .light-theme {
+//   --primary-color: rgb(238, 238, 238);
+//   --primary-color-v2: white;
+//   --secondary-color: #00aeff;
+//   --tertiary-color: blue;
+
+//   --text-color: #313131;
+//   --text-color-2: #505050;
+//   --text-color-3: #8d8d8d;
+//   --text-color-4: #c9c9c9;
+
+//   --danger-color: red;
+//   --alert-color: yellow;
+//   --succes-color: green;
+// }
 

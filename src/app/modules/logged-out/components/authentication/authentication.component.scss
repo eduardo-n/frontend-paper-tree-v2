@@ -1,15 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100&family=Caveat:wght@600&family=Handlee&family=Kaushan+Script&family=Montserrat:wght@100&family=Permanent+Marker&family=Poiret+One&family=Roboto+Mono:wght@100&family=Satisfy&display=swap');
+
 .pg-authentication {
   display: flex;
 
   .left-box {
     height: 100vh;
-    width: 50%;
+    min-width: 600px;
     background-color: var(--secondary-color);
   }
 
   .right-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    width: 50%;
-    background-color: var(--primary-color);
+    width: 100%;
+    background-image: linear-gradient(150deg, var(--primary-color) 50%, var(--primary-color-v2));
+
+    .bx-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      max-width: 359px;
+
+      .tree-icon {
+        font-size: 30px;
+        color: var(--tertiary-color);
+      }
+
+      p {
+        font-size: 15px;
+        text-align: center;
+        line-height: 1.8;
+        color: var(--secondary-color);
+        margin-top: 30px;
+
+        span {
+          font-size: 22px;
+          color: var(--tertiary-color);
+          font-family: 'Caveat', cursive;
+        }
+      }
+    }
   }
 }
