@@ -1,0 +1,28 @@
+<div class="bx-login">
+  <div class="bx-title">
+    <h4>Bem-vindo(a)</h4>
+    <h1>Entre com sua conta</h1>
+  </div>
+
+  <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+    <div class="form-login">
+
+      <mat-form-field appearance="outline" class="mat-form-field">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput class="email-field">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input [type]="hidePassword ? 'password' : 'text'" formControlName="senha" matInput>
+        <!-- <mat-error error-messages [control]="senha"></mat-error> -->
+        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-flat-button type="submit" (click)="onSubmit()" class="btn-login">Login</button>
+
+    </div>
+  </form>
+</div>

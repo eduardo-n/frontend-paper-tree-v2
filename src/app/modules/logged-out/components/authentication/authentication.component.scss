@@ -4,8 +4,11 @@
   display: flex;
 
   .left-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    min-width: 600px;
+    min-width: 480px;
     background-color: var(--secondary-color);
   }
 
