@@ -28,10 +28,12 @@
       align-items: center;
       padding: 60px;
       max-width: 359px;
+      cursor: pointer;
 
       .tree-icon {
         font-size: 30px;
         color: var(--tertiary-color);
+        transition: 1s ease-out;
       }
 
       p {
@@ -48,6 +50,10 @@
         }
       }
     }
+  }
+
+  .bx-info:hover .tree-icon {
+    transform: translateY(-0.25rem);
   }
 }
 
