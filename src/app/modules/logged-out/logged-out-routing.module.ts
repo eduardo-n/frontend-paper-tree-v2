@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UnauthenticatedComponentsEnum } from 'src/app/core/enum/unauthenticated-components.enum';
-import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 const routes: Routes = [
   {
