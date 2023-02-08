@@ -50,3 +50,18 @@
     }
   }
 }
+
+@media (max-width: 780px) {
+  .pg-authentication {
+    .left-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .right-box {
+      display: none;
+    }
+  }
+}
