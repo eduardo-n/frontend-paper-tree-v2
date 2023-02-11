@@ -13,13 +13,13 @@
             <mat-label>Nome</mat-label>
             <input matInput placeholder="Nome Completo" formControlName="nome" required
               (input)="nome.setValue(nome.value.toUpperCase())">
-            <!-- <mat-error error-messages [control]="nome"></mat-error> -->
+            <mat-error error-messages [control]="nome"></mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline">
             <mat-label>CPF</mat-label>
-            <input matInput placeholder="CPF" formControlName="cpf" required>
-            <!-- <mat-error error-messages [control]="cpf"></mat-error> -->
+            <input matInput placeholder="CPF" formControlName="cpf" required [pptCpfMaskDirective]="cpf">
+            <mat-error error-messages [control]="cpf"></mat-error>
           </mat-form-field>
           <div>
             <button mat-flat-button matStepperNext class="btn-step btn-next">Avançar</button>
@@ -33,13 +33,13 @@
           <mat-form-field appearance="outline">
             <mat-label>Curso</mat-label>
             <input matInput formControlName="curso">
-            <!-- <mat-error error-messages [control]="curso"></mat-error> -->
+            <mat-error error-messages [control]="curso"></mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline">
             <mat-label>Matrícula</mat-label>
             <input matInput formControlName="matricula" placeholder="Matrícula" required [maxLength]="4">
-            <!-- <mat-error error-messages [message]="'A matrícula deve ter 4 dígitos'" [control]="matricula"></mat-error> -->
+            <mat-error error-messages [message]="'A matrícula deve ter 4 dígitos'" [control]="matricula"></mat-error>
           </mat-form-field>
           <br />
           <section class="checkbox-section">
