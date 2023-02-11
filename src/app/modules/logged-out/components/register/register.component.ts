@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
+import { pptValidators } from 'src/app/shared/validators/ppt-validators';
 
 @Component({
   selector: 'app-register',
@@ -26,8 +27,8 @@ export class RegisterComponent implements OnInit {
 
   buildForm() {
     this.formPersonal = this.fb.group({
-      nome: [null, [Validators.required/*, pptValidators.fullNameSurname*/]],
-      cpf: [null, [Validators.required/*, pptValidators.cpf*/]]
+      nome: [null, [Validators.required, pptValidators.fullNameSurname]],
+      cpf: [null, [Validators.required, pptValidators.cpf]]
     });
 
     this.formCollege = this.fb.group({
