@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   buildForm() {
     this.formLogin = this.fb.group({
-      email: [null, [Validators.required, Validators.email, /*pptValidators.emailUfvDomain*/]],
+      email: [null, [Validators.required, Validators.email, PptValidators.emailUfvDomain]],
       senha: [null, [Validators.required]]
     })
   }

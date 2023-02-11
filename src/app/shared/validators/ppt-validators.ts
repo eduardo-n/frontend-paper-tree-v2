@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
 import { isValidCpf } from "./documents/is-valid-cpf.utils";
 
-export class pptValidators {
+export class PptValidators {
 
   static cpf(control: AbstractControl): ValidationErrors {
     if(control.value && control.value != ''){
