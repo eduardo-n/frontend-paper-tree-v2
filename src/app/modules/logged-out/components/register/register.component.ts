@@ -15,7 +15,6 @@ export class RegisterComponent implements OnInit {
   formAccess : FormGroup;
 
   hidePassword: boolean = true;
-  hideConfirmPassword: boolean = true;
 
   constructor(
     private fb: FormBuilder

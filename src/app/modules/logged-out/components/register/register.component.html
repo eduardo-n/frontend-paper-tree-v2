@@ -49,7 +49,7 @@
           <mat-form-field appearance="outline" *ngIf="tipoContribuidor.value === TipoContribuidorEnum.ORIENTADOR">
             <mat-label>Token</mat-label>
             <input matInput formControlName="tokenOrientador" placeholder="Token de orientador" required [maxLength]="23">
-            <!-- <mat-error error-messages [control]="tokenOrientador"></mat-error> -->
+            <mat-error error-messages [control]="tokenOrientador"></mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline">
@@ -57,7 +57,7 @@
             <input matInput [matDatepicker]="picker" formControlName="dataIngresso" [disabled]="true">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker [disabled]="false" #picker></mat-datepicker>
-            <!-- <mat-error error-messages [control]="dataIngresso"></mat-error> -->
+            <mat-error error-messages [control]="dataIngresso"></mat-error>
           </mat-form-field>
           <div class="bx-btns-college">
             <button mat-flat-button matStepperPrevious class="btn-previous">Voltar</button>
@@ -72,14 +72,14 @@
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Email" formControlName="email" required class="email-field">
-            <!-- <mat-error error-messages [control]="email"></mat-error> -->
+            <mat-error error-messages [control]="email"></mat-error>
           </mat-form-field>
           <br />
 
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
             <input [type]="hidePassword ? 'password' : 'text'" formControlName="senha" required matInput>
-            <!-- <mat-error error-messages [control]="senha"></mat-error> -->
+            <mat-error error-messages [control]="senha"></mat-error>
             <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -88,11 +88,11 @@
           <br />
           <mat-form-field appearance="outline">
             <mat-label>Confirmar senha</mat-label>
-            <input [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="Senha"
+            <input [type]="hidePassword ? 'password' : 'text'" placeholder="Senha"
               formControlName="confirmarSenha" required matInput>
-            <!-- <mat-error error-messages [control]="confirmarSenha"></mat-error> -->
-            <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
-              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error error-messages [control]="confirmarSenha"></mat-error>
+            <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
           <div>
