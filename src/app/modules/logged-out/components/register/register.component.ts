@@ -37,14 +37,13 @@ export class RegisterComponent implements OnInit {
       tipoContribuidor: [TipoContribuidorEnum.AUTOR],
       tokenOrientador: [null],
       dataIngresso: [null, [Validators.required]]
-    })
-    this.curso.disable();
+    });
 
     this.formAccess = this.fb.group({
       email: [null, [Validators.required, Validators.email/*, pptValidators.emailUfvDomain*/]],
       senha: [null, [Validators.required]],
       confirmarSenha: [null, [Validators.required]]
-    })
+    });
   }
 
   onCheckboxChangeContributorType(event: any) {
