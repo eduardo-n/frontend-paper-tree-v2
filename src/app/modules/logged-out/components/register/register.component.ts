@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     });
 
     this.formAccess = this.fb.group({
-      email: [null, [Validators.required, Validators.email/*, pptValidators.emailUfvDomain*/]],
+      email: [null, [Validators.required, Validators.email, pptValidators.emailUfvDomain]],
       senha: [null, [Validators.required]],
       confirmarSenha: [null, [Validators.required]]
     });
