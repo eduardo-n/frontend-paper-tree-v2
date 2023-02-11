@@ -10,12 +10,13 @@
       <mat-form-field appearance="outline" class="mat-form-field">
         <mat-label>Email</mat-label>
         <input type="email" formControlName="email" matInput class="email-field">
+        <mat-error error-messages [control]="email"></mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Senha</mat-label>
         <input [type]="hidePassword ? 'password' : 'text'" formControlName="senha" matInput>
-        <!-- <mat-error error-messages [control]="senha"></mat-error> -->
+        <mat-error error-messages [control]="senha"></mat-error>
         <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
           <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
