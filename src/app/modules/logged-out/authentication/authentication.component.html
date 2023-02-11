@@ -1,6 +1,7 @@
 <div class="pg-authentication">
   <div class="left-box">
     <app-login *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.login"></app-login>
+    <app-register *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.register"></app-register>
   </div>
   <div class="right-box">
     <div class="bx-info">

@@ -16,6 +16,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [],
@@ -37,7 +38,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatChipsModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule
   ],
 })
 export class MaterialModule { }

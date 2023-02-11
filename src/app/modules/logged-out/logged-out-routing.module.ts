@@ -8,6 +8,11 @@ const routes: Routes = [
     path: '',
     component: AuthenticationComponent,
     data: { unauthenticatedComponent: UnauthenticatedComponentsEnum.login }
+  },
+  {
+    path: 'cadastro',
+    component: AuthenticationComponent,
+    data: { unauthenticatedComponent: UnauthenticatedComponentsEnum.register }
   }
 ]
 
