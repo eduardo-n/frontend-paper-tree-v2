@@ -53,9 +53,9 @@ mat-form-field {
 
 .custom-modal {
   mat-dialog-container {
-      padding: 0;
+      padding: 25px;
       max-height: 620px;
-      background-color: var(--text-color-2);
+      background-color: var(--secondary-color);
       border-radius: 20px;
   }
 }

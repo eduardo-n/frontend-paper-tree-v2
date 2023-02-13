@@ -10,9 +10,14 @@
   --text-color-3: #333333;
   --text-color-4: black;
 
-  --danger-color: red;
-  --alert-color: yellow;
-  --succes-color: green;
+  --danger-color: #F43A68;
+  --danger-color-light: #F43A6810;
+
+  --alert-color: #F8B027;
+  --alert-color-light: #F8B02710;
+
+  --succes-color: #7CC372;
+  --succes-color-light: #7CC37210;
 }
 
 // :root .light-theme {
