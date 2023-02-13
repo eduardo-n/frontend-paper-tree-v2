@@ -60,6 +60,11 @@ mat-form-field {
   }
 }
 
+/* Border */
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--primary-color);
+}
+
 .backdrop-background {
   background-color:rgba(0, 0, 0, 0.432);
   backdrop-filter: blur(10px);
