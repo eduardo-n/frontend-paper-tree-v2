@@ -33,6 +33,16 @@
       }
     }
   }
+
+  .links{
+    margin-top: 20px;
+    color: var(--primary-color);
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+  }
 }
 
 ::ng-deep .mat-step-header {

@@ -95,12 +95,14 @@
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
-          <div>
-            <button mat-flat-button type="submit" (click)="onSubmit()" class="btn-register">Cadastrar</button>
-          </div>
+
+          <button mat-flat-button type="submit" (click)="onSubmit()" class="btn-register">Cadastrar</button>
         </form>
       </mat-step>
-
     </mat-stepper>
+
+    <div class="links">
+      <a [routerLink]="['/']">Cancelar cadastro</a>
+    </div>
   </div>
 </div>
