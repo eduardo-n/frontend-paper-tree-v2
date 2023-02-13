@@ -1,0 +1,18 @@
+<div class="modal">
+  <div class="bx-close-btn">
+    <i class="fa-solid fa-xmark" (click)="close()"></i>
+  </div>
+  <div class="bx-icon" *ngIf="data.cssClassIcon">
+    <i [ngClass]="data.cssClassIcon"></i>
+  </div>
+  <div class="bx-title" *ngIf="data.title">
+    <h2 [innerHTML]="data.title"></h2>
+  </div>
+  <div class="bx-text" *ngIf="data.text">
+    <h4 [innerHTML]="data.text"></h4>
+  </div>
+  <div class="bx-buttons">
+    <button mat-flat-button class="btn-action cancel">{{ data.primaryButtonText }}</button>
+    <button mat-flat-button class="btn-action confirm">{{ data.secondaryButtonText }}</button>
+  </div>
+</div>

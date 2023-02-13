@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
+import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
 @Component({
@@ -17,7 +19,8 @@ export class RegisterComponent implements OnInit {
   hidePassword: boolean = true;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,19 @@ export class RegisterComponent implements OnInit {
       this.tokenOrientador.setValidators(null);
     }
     this.tokenOrientador.updateValueAndValidity();
+  }
+
+  confirmationModal() {
+    this.dialog.open(ConfirmationModalComponent, {
+      data: {
+        cssClassIcon: 'fa-solid fa-triangle-exclamation',
+        text: 'Deseja mesmo cancelar o seu cadastro ?',
+        primaryButtonText: 'Continuar editando',
+        secondaryButtonText: 'Sim, quero cancelar'
+      },
+      panelClass: 'custom-modal',
+      backdropClass: 'backdrop-background'
+    });
   }
 
   onSubmit() {
