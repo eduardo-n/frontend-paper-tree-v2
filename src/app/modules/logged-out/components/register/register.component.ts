@@ -79,7 +79,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.formPersonal.valid && this.formCollege.valid && this.formAccess.valid) {
 
+    }
   }
 
   //FormPersonal
