@@ -20,6 +20,10 @@ export class ConfirmationModalComponent implements OnInit {
   }
 
   close(): void {
-    this.modalRef.close();
+    this.modalRef.close(false);
+  }
+
+  confirm(): void {
+    this.modalRef.close(true);
   }
 }

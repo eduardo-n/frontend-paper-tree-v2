@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
 import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -69,6 +71,10 @@ export class RegisterComponent implements OnInit {
       },
       panelClass: 'custom-modal',
       backdropClass: 'backdrop-background'
+    }).afterClosed().subscribe(confirmed => {
+      if(confirmed){
+        this.router.navigateByUrl('/');
+      }
     });
   }
 

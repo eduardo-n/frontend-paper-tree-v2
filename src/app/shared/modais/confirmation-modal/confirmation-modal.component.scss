@@ -1,4 +1,9 @@
 .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   .bx-close-btn {
     width: 100%;
     display: flex;
@@ -12,9 +17,6 @@
   }
 
   .bx-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 20px;
 
     i {
@@ -23,9 +25,6 @@
   }
 
   .bx-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 20px;
   }
 
@@ -43,7 +42,7 @@
 
       &.cancel {
         margin-right: 7px;
-        background-color: var(--text-color) !important;
+        background-color: var(--primary-color-v2) !important;
       }
 
       &.confirm {

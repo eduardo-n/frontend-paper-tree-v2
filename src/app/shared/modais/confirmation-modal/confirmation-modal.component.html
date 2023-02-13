@@ -12,7 +12,7 @@
     <h4 [innerHTML]="data.text"></h4>
   </div>
   <div class="bx-buttons">
-    <button mat-flat-button class="btn-action cancel">{{ data.primaryButtonText }}</button>
-    <button mat-flat-button class="btn-action confirm">{{ data.secondaryButtonText }}</button>
+    <button mat-flat-button class="btn-action cancel" (click)="close()">{{ data.primaryButtonText }}</button>
+    <button mat-flat-button class="btn-action confirm" (click)="confirm()">{{ data.secondaryButtonText }}</button>
   </div>
 </div>
