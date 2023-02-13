@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
 
     this.formAccess = this.fb.group({
       email: [null, [Validators.required, Validators.email, PptValidators.emailUfvDomain]],
-      senha: [null, [Validators.required]],
-      confirmarSenha: [null, [Validators.required]]
+      senha: [null, [Validators.required, PptValidators.passwordRules]],
+      confirmarSenha: [null, [Validators.required, PptValidators.passwordCompare('senha')]]
     });
   }
 
