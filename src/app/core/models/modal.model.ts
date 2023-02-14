@@ -1,5 +1,3 @@
-import { MatDialog } from "@angular/material/dialog";
-
 export interface ModalModel{
   cssClassIcon?: string,
   title?: string,
