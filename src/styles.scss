@@ -24,6 +24,35 @@ span {
   color: var(--text-color);
 }
 
+.cdk-overlay-pane {
+  margin-top: 100px;
+}
+
+snack-bar-container {
+  span {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+  }
+}
+
+snack-bar-container.success-snack-bar {
+  background-color: var(--succes-color);
+  color: white;
+}
+
+snack-bar-container.alert-snack-bar {
+  background-color: var(--alert-color);
+  color: white;
+}
+
+snack-bar-container.failure-snack-bar {
+  background-color: var(--danger-color);
+  color: white;
+}
+
 mat-form-field {
   button {
     mat-icon {

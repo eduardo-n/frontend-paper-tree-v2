@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
 import { ModalModel } from 'src/app/core/models/modal.model';
+import { ToastService } from 'src/app/core/services/toast/toast.service';
 
 @Component({
   selector: 'app-token-validation-modal',
@@ -18,6 +20,7 @@ export class TokenValidationModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ModalModel,
 
     private fb: FormBuilder,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +41,7 @@ export class TokenValidationModalComponent implements OnInit {
     if(this.tokenControl.value === this.officialToken) {
       this.modalRef.close(true);
     } else {
-      // Exibir Toast de Token Incorreto
+      this.toastService.open('Token inválido', ToastStyleEnum.failure);
     }
   }
 
