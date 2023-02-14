@@ -81,6 +81,9 @@ export class RegisterComponent implements OnInit {
 
   tokenValidationModal() {
     return this.dialog.open(TokenValidationModalComponent, {
+      data: {
+        email: this.email.value
+      },
       panelClass: 'custom-modal',
       backdropClass: 'backdrop-background'
     });
