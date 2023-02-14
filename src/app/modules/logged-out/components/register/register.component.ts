@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
 import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
+import { TokenValidationModalComponent } from 'src/app/shared/modais/token-validation-modal/token-validation-modal.component';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
 @Component({
@@ -78,9 +79,21 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  tokenValidationModal() {
+    return this.dialog.open(TokenValidationModalComponent, {
+      panelClass: 'custom-modal',
+      backdropClass: 'backdrop-background'
+    });
+  }
+
   onSubmit() {
     if (this.formPersonal.valid && this.formCollege.valid && this.formAccess.valid) {
+      this.tokenValidationModal().afterClosed().subscribe(confirmedValidation => {
+        if(confirmedValidation) {
+          // Fazer o cadastro
 
+        }
+      });
     }
   }
 

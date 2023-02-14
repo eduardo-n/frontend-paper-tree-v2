@@ -1,0 +1,30 @@
+
+<div class="modal">
+  <div class="bx-close-btn">
+    <i class="fa-solid fa-xmark" (click)="close()"></i>
+  </div>
+  <div class="bx-icon">
+    <i class="fa-solid fa-user-shield"></i>
+  </div>
+  <div class="bx-title">
+    <h2>
+      Verifique seu e-mail
+    </h2>
+  </div>
+  <div class="bx-text">
+    <h4 class="text-one">Para continuar, confirme que você tem acesso ao endereço <strong>edununes726@gmail.com</strong></h4>
+    <h4 class="text-two">
+      Enviamos um novo código em seu email para fazer a verificação de seu usuário. Se não encontrar na sua caixa de entrada, procure também na sua caixa de Spam.
+    </h4>
+  </div>
+
+  <form [formGroup]="formToken" class="form-token">
+    <mat-form-field appearance="outline">
+      <mat-label>Código</mat-label>
+      <input matInput placeholder="Código" formControlName="tokenControl" required>
+      <mat-error error-messages [control]="tokenControl"></mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button class="btn-confirm" (click)="onSubmit()">Confirmar</button>
+  </form>
+</div>

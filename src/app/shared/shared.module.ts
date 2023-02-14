@@ -4,17 +4,22 @@ import { ErrorMessagesComponent } from './components/error-messages/error-messag
 import { CpfMaskDirective } from './directives/cpf-mask/cpf-mask.directive';
 import { ConfirmationModalComponent } from './modais/confirmation-modal/confirmation-modal.component';
 import { MaterialModule } from './modules/material/material.module';
+import { TokenValidationModalComponent } from './modais/token-validation-modal/token-validation-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ErrorMessagesComponent,
     CpfMaskDirective,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    TokenValidationModalComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     // components
