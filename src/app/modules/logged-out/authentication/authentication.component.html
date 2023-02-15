@@ -2,6 +2,7 @@
   <div class="left-box">
     <app-login *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.login"></app-login>
     <app-register *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.register"></app-register>
+    <app-forgot-password *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.forgotPassword"></app-forgot-password>
   </div>
   <div class="right-box">
     <div class="bx-info">

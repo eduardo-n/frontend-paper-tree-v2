@@ -13,6 +13,11 @@ const routes: Routes = [
     path: 'cadastro',
     component: AuthenticationComponent,
     data: { unauthenticatedComponent: UnauthenticatedComponentsEnum.register }
+  },
+  {
+    path: 'esqueci-senha',
+    component: AuthenticationComponent,
+    data: { unauthenticatedComponent: UnauthenticatedComponentsEnum.forgotPassword }
   }
 ]
 

@@ -13,7 +13,7 @@ import { ToastService } from 'src/app/core/services/toast/toast.service';
 export class TokenValidationModalComponent implements OnInit {
 
   formToken: FormGroup;
-  officialToken: string = 'pegar da API';
+  officialToken: string;
 
   constructor(
     public modalRef: MatDialogRef<TokenValidationModalComponent>,
@@ -31,6 +31,11 @@ export class TokenValidationModalComponent implements OnInit {
     this.formToken = this.fb.group({
       tokenControl: [null, [Validators.required]]
     });
+  }
+
+  getOfficialToken() {
+    this.officialToken = 'pegar da API';
+    return this.officialToken;
   }
 
   close(): void {

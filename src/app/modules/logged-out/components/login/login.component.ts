@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.formLogin = this.fb.group({
       email: [null, [Validators.required, Validators.email, PptValidators.emailUfvDomain]],
       senha: [null, [Validators.required]]
-    })
+    });
   }
 
   onSubmit() {
