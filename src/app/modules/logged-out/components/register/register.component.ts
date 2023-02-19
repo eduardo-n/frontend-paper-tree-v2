@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
       backdropClass: 'backdrop-background'
     }).afterClosed().subscribe(confirmed => {
       if(confirmed){
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/autenticacao');
       }
     });
   }
