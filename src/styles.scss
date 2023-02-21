@@ -104,11 +104,11 @@ mat-form-field {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--text-color-4);
-  border-radius: 6px;
+  background-color: var(--text-color-2);
+  border-radius: 3px;
 }
