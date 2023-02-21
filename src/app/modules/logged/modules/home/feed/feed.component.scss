@@ -1,5 +1,44 @@
 .pg-feed {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
-  background-color:  var(--primary-color-v3);
+  margin-top: 110px;
+
+  .left-box {
+    padding: 50px 20px;
+  }
+
+  .middle-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 800px;
+    padding: 50px 20px;
+
+    .item-card {
+      margin-bottom: 30px;
+    }
+  }
+
+  .right-box {
+    padding: 50px 20px;
+  }
+}
+
+@media (max-width: 912px) {
+  .left-box {
+    display: none;
+  }
+
+  .middle-box {
+    padding: 30px 20px !important;
+  }
+
+  .right-box {
+    display: none;
+  }
+}
+
+@media (max-width: 585px) {
+
 }
