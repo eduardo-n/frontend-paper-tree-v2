@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
@@ -14,14 +14,14 @@ import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 })
 export class RegisterComponent implements OnInit {
 
-  formPersonal: FormGroup;
-  formCollege: FormGroup;
-  formAccess : FormGroup;
+  formPersonal: UntypedFormGroup;
+  formCollege: UntypedFormGroup;
+  formAccess : UntypedFormGroup;
 
   hidePassword: boolean = true;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dialog: MatDialog,
     private router: Router
   ) { }

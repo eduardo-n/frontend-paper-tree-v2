@@ -6,7 +6,7 @@ import { LoggedRoutingModule } from './logged-routing.module';
 import { PostCardComponent } from './components/post-card/post-card.component';
 
 @NgModule({
-  declarations: [HeaderBarComponent, PostCardComponent],
+  declarations: [HeaderBarComponent],
   imports: [
     LoggedRoutingModule,
     MaterialModule

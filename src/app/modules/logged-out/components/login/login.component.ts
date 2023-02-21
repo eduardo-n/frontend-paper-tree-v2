@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
 @Component({
@@ -10,11 +10,11 @@ import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 })
 export class LoginComponent implements OnInit {
 
-  formLogin: FormGroup;
+  formLogin: UntypedFormGroup;
   hidePassword: boolean = true;
 
   constructor(
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { }
 
   ngOnInit(): void {
