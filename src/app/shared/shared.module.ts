@@ -7,6 +7,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { TokenValidationModalComponent } from './modais/token-validation-modal/token-validation-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostCardComponent } from './components/post-card/post-card.component';
+import { EmptyContentCardComponent } from './components/empty-content-card/empty-content-card.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PostCardComponent } from './components/post-card/post-card.component';
     CpfMaskDirective,
     ConfirmationModalComponent,
     TokenValidationModalComponent,
-    PostCardComponent
+    PostCardComponent,
+    EmptyContentCardComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { PostCardComponent } from './components/post-card/post-card.component';
     // components
     ErrorMessagesComponent,
     PostCardComponent,
+    EmptyContentCardComponent,
     // directives
     CpfMaskDirective
   ]
