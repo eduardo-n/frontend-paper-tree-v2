@@ -8,7 +8,7 @@
     <div class="item-card">
       <app-empty-content-card></app-empty-content-card>
     </div>
-    <div class="item-card">
+    <div class="item-card" *ngFor="let post of posts">
       <app-post-card></app-post-card>
     </div>
   </div>
