@@ -6,6 +6,7 @@ import { ConfirmationModalComponent } from './modais/confirmation-modal/confirma
 import { MaterialModule } from './modules/material/material.module';
 import { TokenValidationModalComponent } from './modais/token-validation-modal/token-validation-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostCardComponent } from './components/post-card/post-card.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ErrorMessagesComponent,
     CpfMaskDirective,
     ConfirmationModalComponent,
-    TokenValidationModalComponent
+    TokenValidationModalComponent,
+    PostCardComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     // components
     ErrorMessagesComponent,
+    PostCardComponent,
     // directives
     CpfMaskDirective
   ]
