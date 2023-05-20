@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
+import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
+import { ToastService } from 'src/app/core/services/toast-service/toast.service';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
 @Component({
@@ -14,7 +17,9 @@ export class LoginComponent implements OnInit {
   hidePassword: boolean = true;
 
   constructor(
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
+    private authService: AuthenticationService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-
+    if(this.formLogin.valid) {
+      this.authService.login(this.formLogin.value).subscribe(
+        {
+          next: (data) => {
+            data // setar na session storage
+          },
+          error: (e) => {
+            this.toastService.open('Usuário inválido', ToastStyleEnum.failure);
+          }
+        }
+      )
+    }
   }
 
   get email() {
