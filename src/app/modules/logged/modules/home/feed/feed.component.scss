@@ -5,6 +5,7 @@
   margin-top: 110px;
 
   .left-box {
+    width: 250px;
     padding: 50px 20px;
   }
 
@@ -12,7 +13,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 800px;
+    width: 540px;
     padding: 20px 20px 30px 20px;
 
     .item-card {
@@ -21,17 +22,29 @@
   }
 
   .right-box {
-    padding: 50px 20px;
+    width: 250px;
+    padding: 20px;
+
+    .bx-images {
+      width: 250px;
+      position: fixed;
+
+      img {
+        border-radius: 8px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 
 @media (max-width: 912px) {
   .left-box {
-    display: none;
+    display: none !important;
   }
 
   .right-box {
-    display: none;
+    display: none !important;
   }
 }
 

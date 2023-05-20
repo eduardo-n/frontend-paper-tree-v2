@@ -5,7 +5,7 @@
   </div>
 
   <div class="middle-box">
-    <div class="item-card" *ngIf="posts.length <= 0">
+    <div class="item-card" >
       <app-empty-content-card></app-empty-content-card>
     </div>
     <div class="item-card" *ngFor="let post of posts">
@@ -14,6 +14,9 @@
   </div>
 
   <div class="right-box">
-
+    <div class="bx-images">
+      <img src="assets/images/preto-branco.jpg">
+      <img src="assets/images/ufv.png">
+    </div>
   </div>
 </div>
