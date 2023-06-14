@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,10 +13,10 @@ export class AuthenticationService {
   constructor(
     private httpService: HttpClient
   ) {
-    this._loggedUser = sessionStorage.getItem('loggedUser');
+    this._loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
   }
 
-  login(loginData) {
+  login(loginData): Observable<any> {
     return this.httpService.get(`${environment.baseURL}users/login`,
       {
         params: loginData
@@ -24,7 +25,7 @@ export class AuthenticationService {
   }
 
   setLoggedUser(loggedUser) {
-    sessionStorage.setItem('loggedUser', loggedUser);
+    sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   }
 
   get loggedUser() {

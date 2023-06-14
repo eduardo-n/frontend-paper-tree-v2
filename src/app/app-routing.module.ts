@@ -6,14 +6,15 @@ import { LoggedOutGuard } from './core/guards/logged-out.guard';
 
 const routes: Routes = [
   {
+    path:'',
+    pathMatch: 'full',
+    loadChildren: () => import('./modules/logged/logged.module').then(m => m.LoggedModule),
+    canActivate: [LoggedGuard]
+  },
+  {
     path: 'autenticacao',
     loadChildren: () => import('./modules/logged-out/logged-out.module').then(m => m.LoggedOutModule),
     canActivate: [LoggedOutGuard]
-  },
-  {
-    path:'',
-    loadChildren: () => import('./modules/logged/logged.module').then(m => m.LoggedModule),
-    canActivate: [LoggedGuard]
   },
   {
     path:'**',
