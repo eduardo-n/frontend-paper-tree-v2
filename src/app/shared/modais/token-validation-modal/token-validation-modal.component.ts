@@ -39,7 +39,6 @@ export class TokenValidationModalComponent implements OnInit {
   getOfficialToken() {
     this.authService.sendTokenEmail(this.data.email).subscribe(data => {
       this.officialToken = data.toString()
-      debugger
     });
     return this.officialToken;
   }
