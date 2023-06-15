@@ -28,6 +28,10 @@ export class AuthenticationService {
     sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
   }
 
+  sendTokenEmail(email: string){
+    return this.httpService.post(`${environment.baseURL}users/token/email`, email);
+  }
+
   get loggedUser() {
     return this._loggedUser;
   }

@@ -3,6 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
 import { ModalTokenValidationModel } from 'src/app/core/models/modal-token-validation.model';
+import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
 import { ToastService } from 'src/app/core/services/toast-service/toast.service';
 
 @Component({
@@ -20,11 +21,13 @@ export class TokenValidationModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ModalTokenValidationModel,
 
     private fb: UntypedFormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.getOfficialToken();
   }
 
   buildForm() {
@@ -34,7 +37,10 @@ export class TokenValidationModalComponent implements OnInit {
   }
 
   getOfficialToken() {
-    this.officialToken = 'pegar da API';
+    this.authService.sendTokenEmail(this.data.email).subscribe(data => {
+      this.officialToken = data.toString()
+      debugger
+    });
     return this.officialToken;
   }
 
