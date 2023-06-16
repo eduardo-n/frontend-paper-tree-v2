@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
 import { ModalTokenValidationModel } from 'src/app/core/models/modal-token-validation.model';
 import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
@@ -37,8 +38,9 @@ export class TokenValidationModalComponent implements OnInit {
   }
 
   getOfficialToken() {
+    this.officialToken = null;
     this.authService.sendTokenEmail(this.data.email).subscribe(data => {
-      this.officialToken = data.toString()
+      this.officialToken = data.toString();
     });
     return this.officialToken;
   }
@@ -48,8 +50,11 @@ export class TokenValidationModalComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.tokenControl.value === this.officialToken) {
-      this.modalRef.close(true);
+    if(this.officialToken && this.tokenControl.value === this.officialToken) {
+      this.toastService.open('Código válido', ToastStyleEnum.success);
+      setTimeout(() => {
+        this.modalRef.close(true);
+      }, 1200);
     } else {
       this.toastService.open('Código inválido', ToastStyleEnum.failure);
     }
