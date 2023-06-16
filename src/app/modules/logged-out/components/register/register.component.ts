@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
+import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
+import { ToastService } from 'src/app/core/services/toast-service/toast.service';
+import { UserService } from 'src/app/core/services/user-service/user.service';
 import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
 import { TokenValidationModalComponent } from 'src/app/shared/modais/token-validation-modal/token-validation-modal.component';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
@@ -16,14 +20,17 @@ export class RegisterComponent implements OnInit {
 
   formPersonal: UntypedFormGroup;
   formCollege: UntypedFormGroup;
-  formAccess : UntypedFormGroup;
+  formAccess: UntypedFormGroup;
 
   hidePassword: boolean = true;
+  registerLoader: boolean = false;
 
   constructor(
     private fb: UntypedFormBuilder,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -73,7 +80,7 @@ export class RegisterComponent implements OnInit {
       panelClass: 'custom-modal',
       backdropClass: 'backdrop-background'
     }).afterClosed().subscribe(confirmed => {
-      if(confirmed){
+      if (confirmed) {
         this.router.navigateByUrl('/autenticacao');
       }
     });
@@ -89,12 +96,31 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  concatenateForms() {
+    return {
+      ...this.formPersonal.value,
+      ...this.formCollege.value,
+      ...this.formAccess.value,
+    }
+  }
+
   onSubmit() {
     if (this.formPersonal.valid && this.formCollege.valid && this.formAccess.valid) {
       this.tokenValidationModal().afterClosed().subscribe(confirmedValidation => {
-        if(confirmedValidation) {
-          // Fazer o cadastro
-
+        if (confirmedValidation) {
+          this.registerLoader = true;
+          this.userService.registerUser(this.concatenateForms())
+            .pipe(
+              finalize(() => this.registerLoader = false)
+            ).subscribe({
+              next: () => {
+                this.toastService.open('Cadastrado com sucesso', ToastStyleEnum.success);
+                this.router.navigateByUrl('/');
+              },
+              error: (e) => {
+                this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
+              }
+            });
         }
       });
     }

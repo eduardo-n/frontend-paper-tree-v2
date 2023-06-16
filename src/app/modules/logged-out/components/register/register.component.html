@@ -3,7 +3,7 @@
     <h4>Bem-vindo(a)</h4>
     <h1>Cadastre-se</h1>
   </div>
-  <div class="form-register">
+  <div class="form-register" [app-simple-loader]="registerLoader">
     <mat-stepper orientation="vertical" [linear]="true" #stepper>
 
       <mat-step [stepControl]="formPersonal">
