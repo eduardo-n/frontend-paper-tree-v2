@@ -12,6 +12,10 @@ export class FeedComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getPosts();
   }
 
+  getPosts() {
+
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
-import { ToastStyleEnum } from '../../enum/toastStyle.enum';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastStyleEnum } from '../../enum/toast-style.enum';
 
 @Injectable({
   providedIn: 'root'

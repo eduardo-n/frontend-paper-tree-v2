@@ -46,7 +46,7 @@
             <mat-checkbox formControlName="tipoContribuidor" (change)="onCheckboxChangeContributorType($event)">Sou professor / orientador</mat-checkbox>
           </section>
           <br />
-          <mat-form-field appearance="outline" *ngIf="tipoContribuidor.value === TipoContribuidorEnum.ORIENTADOR">
+          <mat-form-field appearance="outline" *ngIf="tipoContribuidor.value === ContributorTypeEnum.ADVISOR">
             <mat-label>Token</mat-label>
             <input matInput formControlName="tokenOrientador" placeholder="Token de orientador" required [maxLength]="23">
             <mat-error error-messages [control]="tokenOrientador"></mat-error>

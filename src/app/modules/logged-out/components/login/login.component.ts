@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
+import { ToastStyleEnum } from 'src/app/core/enum/toast-style.enum';
 import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
 import { ToastService } from 'src/app/core/services/toast-service/toast.service';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';

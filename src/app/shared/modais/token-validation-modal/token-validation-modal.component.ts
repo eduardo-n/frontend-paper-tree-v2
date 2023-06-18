@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
+import { ToastStyleEnum } from 'src/app/core/enum/toast-style.enum';
 import { ModalTokenValidationModel } from 'src/app/core/models/modal-token-validation.model';
 import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
 import { ToastService } from 'src/app/core/services/toast-service/toast.service';

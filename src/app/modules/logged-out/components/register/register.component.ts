@@ -3,8 +3,8 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { TipoContribuidorEnum } from 'src/app/core/enum/tipoContribuidor.enum';
-import { ToastStyleEnum } from 'src/app/core/enum/toastStyle.enum';
+import { ContributorTypeEnum } from 'src/app/core/enum/contributor-type.enum';
+import { ToastStyleEnum } from 'src/app/core/enum/toast-style.enum';
 import { ToastService } from 'src/app/core/services/toast-service/toast.service';
 import { UserService } from 'src/app/core/services/user-service/user.service';
 import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     this.formCollege = this.fb.group({
       curso: [{ value: "Sistemas de Informação", disabled: true }, [Validators.required]],
       matricula: [null, [Validators.required, Validators.minLength(4)]],
-      tipoContribuidor: [TipoContribuidorEnum.AUTOR],
+      tipoContribuidor: [ContributorTypeEnum.AUTHOR],
       tokenOrientador: [null],
       dataIngresso: [null, [Validators.required]]
     });
@@ -60,10 +60,10 @@ export class RegisterComponent implements OnInit {
 
   onCheckboxChangeContributorType(event: any) {
     if (event.checked) {
-      this.tipoContribuidor.setValue(TipoContribuidorEnum.ORIENTADOR);
+      this.tipoContribuidor.setValue(ContributorTypeEnum.ADVISOR);
       this.tokenOrientador.setValidators([Validators.required]);
     } else {
-      this.tipoContribuidor.setValue(TipoContribuidorEnum.AUTOR);
+      this.tipoContribuidor.setValue(ContributorTypeEnum.AUTHOR);
       this.tokenOrientador.setValidators(null);
     }
     this.tokenOrientador.updateValueAndValidity();
@@ -162,7 +162,7 @@ export class RegisterComponent implements OnInit {
     return this.formAccess.get('confirmarSenha');
   }
 
-  get TipoContribuidorEnum() {
-    return TipoContribuidorEnum;
+  get ContributorTypeEnum() {
+    return ContributorTypeEnum;
   }
 }
