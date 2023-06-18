@@ -18,13 +18,15 @@
     </h4>
   </div>
 
-  <form [formGroup]="formToken" class="form-token">
-    <mat-form-field appearance="outline">
-      <mat-label>Código</mat-label>
-      <input matInput placeholder="Código" formControlName="tokenControl" required>
-      <mat-error error-messages [control]="tokenControl"></mat-error>
-    </mat-form-field>
+  <div [app-simple-loader]="fakeLoader">
+    <form [formGroup]="formToken" class="form-token">
+      <mat-form-field appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput placeholder="Código" formControlName="tokenControl" required>
+        <mat-error error-messages [control]="tokenControl"></mat-error>
+      </mat-form-field>
 
-    <button mat-flat-button class="btn-confirm" (click)="onSubmit()">Confirmar</button>
-  </form>
+      <button mat-flat-button class="btn-confirm" (click)="onSubmit()">Confirmar</button>
+    </form>
+  </div>
 </div>

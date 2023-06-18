@@ -11,9 +11,9 @@
           <ng-template matStepLabel>Dados pessoais</ng-template>
           <mat-form-field appearance="outline">
             <mat-label>Nome</mat-label>
-            <input matInput placeholder="Nome Completo" formControlName="nome" required
-              (input)="nome.setValue(nome.value.toUpperCase())">
-            <mat-error error-messages [control]="nome"></mat-error>
+            <input matInput placeholder="Nome Completo" formControlName="name" required
+              (input)="name.setValue(name.value.toUpperCase())">
+            <mat-error error-messages [control]="name"></mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline">
@@ -32,32 +32,32 @@
           <ng-template matStepLabel>Dados acadêmicos</ng-template>
           <mat-form-field appearance="outline">
             <mat-label>Curso</mat-label>
-            <input matInput formControlName="curso">
-            <mat-error error-messages [control]="curso"></mat-error>
+            <input matInput formControlName="course">
+            <mat-error error-messages [control]="course"></mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline">
             <mat-label>Matrícula</mat-label>
-            <input matInput formControlName="matricula" placeholder="Matrícula" required [maxLength]="4">
-            <mat-error error-messages [message]="'A matrícula deve ter 4 dígitos'" [control]="matricula"></mat-error>
+            <input matInput formControlName="register" placeholder="Matrícula" required [maxLength]="4">
+            <mat-error error-messages [message]="'A matrícula deve ter 4 dígitos'" [control]="register"></mat-error>
           </mat-form-field>
           <br />
           <section class="checkbox-section">
-            <mat-checkbox formControlName="tipoContribuidor" (change)="onCheckboxChangeContributorType($event)">Sou professor / orientador</mat-checkbox>
+            <mat-checkbox formControlName="contributorType" (change)="onCheckboxChangeContributorType($event)">Sou professor / orientador</mat-checkbox>
           </section>
           <br />
-          <mat-form-field appearance="outline" *ngIf="tipoContribuidor.value === ContributorTypeEnum.ADVISOR">
+          <mat-form-field appearance="outline" *ngIf="contributorType.value === ContributorTypeEnum.ADVISOR">
             <mat-label>Token</mat-label>
-            <input matInput formControlName="tokenOrientador" placeholder="Token de orientador" required [maxLength]="23">
-            <mat-error error-messages [control]="tokenOrientador"></mat-error>
+            <input matInput formControlName="validateTokenAdvisor" placeholder="Token de orientador" required [maxLength]="23">
+            <mat-error error-messages [control]="validateTokenAdvisor"></mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline">
             <mat-label>Data de ingresso</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dataIngresso" [disabled]="true">
+            <input matInput [matDatepicker]="picker" formControlName="admissionDate" [disabled]="true">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker [disabled]="false" #picker></mat-datepicker>
-            <mat-error error-messages [control]="dataIngresso"></mat-error>
+            <mat-error error-messages [control]="admissionDate"></mat-error>
           </mat-form-field>
           <div class="bx-btns-college">
             <button mat-flat-button matStepperPrevious class="btn-previous">Voltar</button>
@@ -78,8 +78,8 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input [type]="hidePassword ? 'password' : 'text'" formControlName="senha" required matInput>
-            <mat-error error-messages [control]="senha"></mat-error>
+            <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" required matInput>
+            <mat-error error-messages [control]="password"></mat-error>
             <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -89,8 +89,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Confirmar senha</mat-label>
             <input [type]="hidePassword ? 'password' : 'text'" placeholder="Senha"
-              formControlName="confirmarSenha" required matInput>
-            <mat-error error-messages [control]="confirmarSenha"></mat-error>
+              formControlName="confirmationPassword" required matInput>
+            <mat-error error-messages [control]="confirmationPassword"></mat-error>
             <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>

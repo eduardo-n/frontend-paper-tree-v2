@@ -39,34 +39,34 @@ export class RegisterComponent implements OnInit {
 
   buildForm() {
     this.formPersonal = this.fb.group({
-      nome: [null, [Validators.required, PptValidators.fullNameSurname]],
+      name: [null, [Validators.required, PptValidators.fullNameSurname]],
       cpf: [null, [Validators.required, PptValidators.cpf]]
     });
 
     this.formCollege = this.fb.group({
-      curso: [{ value: "Sistemas de Informação", disabled: true }, [Validators.required]],
-      matricula: [null, [Validators.required, Validators.minLength(4)]],
-      tipoContribuidor: [ContributorTypeEnum.AUTHOR],
-      tokenOrientador: [null],
-      dataIngresso: [null, [Validators.required]]
+      course: [{ value: "Sistemas de Informação", disabled: true }, [Validators.required]],
+      register: [null, [Validators.required, Validators.minLength(4)]],
+      contributorType: [ContributorTypeEnum.AUTHOR],
+      validateTokenAdvisor: [null],
+      admissionDate: [null, [Validators.required]]
     });
 
     this.formAccess = this.fb.group({
       email: [null, [Validators.required, Validators.email, PptValidators.emailUfvDomain]],
-      senha: [null, [Validators.required, PptValidators.passwordRules]],
-      confirmarSenha: [null, [Validators.required, PptValidators.passwordCompare('senha')]]
+      password: [null, [Validators.required, PptValidators.passwordRules]],
+      confirmationPassword: [null, [Validators.required, PptValidators.passwordCompare('password')]]
     });
   }
 
   onCheckboxChangeContributorType(event: any) {
     if (event.checked) {
-      this.tipoContribuidor.setValue(ContributorTypeEnum.ADVISOR);
-      this.tokenOrientador.setValidators([Validators.required]);
+      this.contributorType.setValue(ContributorTypeEnum.ADVISOR);
+      this.validateTokenAdvisor.setValidators([Validators.required]);
     } else {
-      this.tipoContribuidor.setValue(ContributorTypeEnum.AUTHOR);
-      this.tokenOrientador.setValidators(null);
+      this.contributorType.setValue(ContributorTypeEnum.AUTHOR);
+      this.validateTokenAdvisor.setValidators(null);
     }
-    this.tokenOrientador.updateValueAndValidity();
+    this.validateTokenAdvisor.updateValueAndValidity();
   }
 
   confirmationModal() {
@@ -127,39 +127,39 @@ export class RegisterComponent implements OnInit {
   }
 
   //FormPersonal
-  get nome() {
-    return this.formPersonal.get('nome');
+  get name() {
+    return this.formPersonal.get('name');
   }
   get cpf() {
     return this.formPersonal.get('cpf');
   }
 
   //FormCollege
-  get curso() {
-    return this.formCollege.get('curso');
+  get course() {
+    return this.formCollege.get('course');
   }
-  get matricula() {
-    return this.formCollege.get('matricula');
+  get register() {
+    return this.formCollege.get('register');
   }
-  get tipoContribuidor() {
-    return this.formCollege.get('tipoContribuidor');
+  get contributorType() {
+    return this.formCollege.get('contributorType');
   }
-  get tokenOrientador() {
-    return this.formCollege.get('tokenOrientador');
+  get validateTokenAdvisor() {
+    return this.formCollege.get('validateTokenAdvisor');
   }
-  get dataIngresso() {
-    return this.formCollege.get('dataIngresso');
+  get admissionDate() {
+    return this.formCollege.get('admissionDate');
   }
 
   //FormLogon
   get email() {
     return this.formAccess.get('email');
   }
-  get senha() {
-    return this.formAccess.get('senha');
+  get password() {
+    return this.formAccess.get('password');
   }
-  get confirmarSenha() {
-    return this.formAccess.get('confirmarSenha');
+  get confirmationPassword() {
+    return this.formAccess.get('confirmationPassword');
   }
 
   get ContributorTypeEnum() {

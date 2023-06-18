@@ -15,6 +15,7 @@ export class TokenValidationModalComponent implements OnInit {
 
   formToken: UntypedFormGroup;
   officialToken: string;
+  fakeLoader: boolean;
 
   constructor(
     public modalRef: MatDialogRef<TokenValidationModalComponent>,
@@ -51,6 +52,7 @@ export class TokenValidationModalComponent implements OnInit {
   onSubmit() {
     if(this.officialToken && this.tokenControl.value === this.officialToken) {
       this.toastService.open('Código válido', ToastStyleEnum.success);
+      this.fakeLoader = true;
       setTimeout(() => {
         this.modalRef.close(true);
       }, 1200);
