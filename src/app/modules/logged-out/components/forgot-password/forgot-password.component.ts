@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { TokenValidationModalComponent } from 'src/app/shared/modais/token-validation-modal/token-validation-modal.component';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
@@ -17,8 +16,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private dialog: MatDialog,
-    private router: Router
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
