@@ -1,6 +1,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import "/src/assets/themes/_themes.scss";
+@import '../node_modules/ngx-bar-rating/themes/br-default-theme.scss';
 
 * {
   font-family: "Montserrat", sans-serif;
@@ -24,9 +25,9 @@ span {
   color: var(--text-color);
 }
 
-.cdk-overlay-pane {
-  margin-top: 100px;
-}
+// .cdk-overlay-pane {
+//   margin-top: 100px;
+// }
 
 snack-bar-container {
   span {

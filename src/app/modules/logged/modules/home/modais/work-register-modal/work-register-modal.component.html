@@ -62,5 +62,12 @@
         </mat-autocomplete>
       </mat-form-field>
     </div>
+
+    <span class="title-field">Avaliação</span>
+    <div class="rating">
+      <bar-rating  [(rate)]="avaliacaoTcc" [max]="5"></bar-rating>
+    </div>
+
+    <button mat-flat-button class="btn-add">Adicionar</button>
   </form>
 </div>

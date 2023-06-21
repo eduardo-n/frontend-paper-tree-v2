@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 import { LoggedRoutingModule } from './logged-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [HeaderBarComponent],
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoggedRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BarRatingModule
   ],
   exports: [RouterModule]
 })

@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { WorkRegisterModalComponent } from './modais/work-register-modal/work-register-modal.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BarRatingModule } from "ngx-bar-rating";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BarRatingModule
   ]
 })
 export class HomeModule { }
