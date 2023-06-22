@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastStyleEnum } from 'src/app/core/enum/toast-style.enum';
+import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
+import { ToastService } from 'src/app/core/services/toast-service/toast.service';
 import { TokenValidationModalComponent } from 'src/app/shared/modais/token-validation-modal/token-validation-modal.component';
 import { PptValidators } from 'src/app/shared/validators/ppt-validators';
 
@@ -16,7 +20,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthenticationService,
+    private toastService: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,8 +33,8 @@ export class ForgotPasswordComponent implements OnInit {
   buildForm() {
     this.formForgotPassword = this.fb.group({
       email: [null, [Validators.required, Validators.email, PptValidators.emailUfvDomain]],
-      novaSenha: [null, [Validators.required, PptValidators.passwordRules]],
-      confirmarNovaSenha: [null, [Validators.required, PptValidators.passwordCompare('novaSenha')]]
+      newPassword: [null, [Validators.required, PptValidators.passwordRules]],
+      confirmNewPassword: [null, [Validators.required, PptValidators.passwordCompare('newPassword')]]
     });
   }
 
@@ -45,22 +52,34 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.formForgotPassword.valid) {
       this.tokenValidationModal().afterClosed().subscribe(confirmedValidation => {
         if (confirmedValidation) {
-          // Fazer a alteração da senha
-
+          this.updatePassword();
         }
       });
     }
+  }
+
+  updatePassword() {
+    this.authService.updateUserPassword(this.email.value, this.newPassword.value)
+      .subscribe({
+        next: () => {
+          this.toastService.open('Senha alterada com sucesso', ToastStyleEnum.success);
+          this.router.navigateByUrl('/');
+        },
+        error: (e) => {
+          this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
+        }
+      });
   }
 
   get email() {
     return this.formForgotPassword.get('email');
   }
 
-  get novaSenha() {
-    return this.formForgotPassword.get('novaSenha');
+  get newPassword() {
+    return this.formForgotPassword.get('newPassword');
   }
 
-  get confirmarNovaSenha() {
-    return this.formForgotPassword.get('confirmarNovaSenha');
+  get confirmNewPassword() {
+    return this.formForgotPassword.get('confirmNewPassword');
   }
 }

@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { UserModel } from 'src/app/core/models/user.model';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -25,7 +25,6 @@ export class WorkRegisterModalComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   fileTcc: File = null;
   formDataPdf = new FormData();
-
   imagemTcc: File = null;
   formDataImagem = new FormData();
   avaliacaoTcc = 3;

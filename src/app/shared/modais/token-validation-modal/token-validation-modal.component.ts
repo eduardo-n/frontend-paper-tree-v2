@@ -45,8 +45,8 @@ export class TokenValidationModalComponent implements OnInit {
     return this.officialToken;
   }
 
-  close(): void {
-    this.modalRef.close(false);
+  close(resp: boolean = false): void {
+    this.modalRef.close(resp);
   }
 
   onSubmit() {
@@ -54,7 +54,7 @@ export class TokenValidationModalComponent implements OnInit {
       this.toastService.open('Código válido', ToastStyleEnum.success);
       this.fakeLoader = true;
       setTimeout(() => {
-        this.modalRef.close(true);
+        this.close(true);
       }, 1200);
     } else {
       this.toastService.open('Código inválido', ToastStyleEnum.failure);

@@ -32,6 +32,18 @@ export class AuthenticationService {
     return this.httpService.post(`${environment.baseURL}users/token/email`, email);
   }
 
+  updateUserPassword(email: string, newPassword: string){
+    return this.httpService.post(`${environment.baseURL}users/update/password`,
+      {
+        email: email,
+        password: newPassword
+      },
+      {
+        responseType: 'arraybuffer'
+      }
+    );
+  }
+
   get loggedUser() {
     return this._loggedUser;
   }
