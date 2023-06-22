@@ -8,6 +8,8 @@ import { ToastService } from 'src/app/core/services/toast-service/toast.service'
 import { ToastStyleEnum } from 'src/app/core/enum/toast-style.enum';
 import { finalize } from 'rxjs';
 import { UserService } from 'src/app/core/services/user-service/user.service';
+import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
+import { WorkService } from 'src/app/core/services/work-service/work.service';
 
 @Component({
   selector: 'app-work-register-modal',
@@ -18,39 +20,42 @@ export class WorkRegisterModalComponent implements OnInit {
 
   @ViewChild('userInput') userInput: ElementRef<HTMLInputElement>;
   formWorkRegister: UntypedFormGroup;
-  exibirUsuariosSelecionados: string[] = [];
-  usuariosSelecionados: UserModel[] = [];
-  usuariosEncontrados: UserModel[] = [];
-  dadoAutor = new FormControl();
+  showSelectedUsers: string[] = [];
+  selectedUsers: UserModel[] = [];
+  usersFound: UserModel[] = [];
+  authorData = new FormControl();
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fileTcc: File = null;
+  workFile: File = null;
   formDataPdf = new FormData();
-  imagemTcc: File = null;
-  formDataImagem = new FormData();
-  avaliacaoTcc = 3;
+  workImage: File = null;
+  formDataImage = new FormData();
+  workRating = 3;
+  loaderRegister: boolean = false;
 
   constructor(
     public modalRef: MatDialogRef<WorkRegisterModalComponent>,
     private fb: UntypedFormBuilder,
     private toastService: ToastService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthenticationService,
+    private workService: WorkService
   ) { }
 
   ngOnInit(): void {
     this.buildForm();
 
-    this.dadoAutor.valueChanges.subscribe(() => {
-      if (!this.dadoAutor.value) {
-        this.usuariosEncontrados = [];
+    this.authorData.valueChanges.subscribe(() => {
+      if (!this.authorData.value) {
+        this.usersFound = [];
       }
 
-      if (typeof (this.dadoAutor.value) != 'object') {
-        this.userService.searchUsersBySplitNameOrRegister(this.dadoAutor.value)
+      if (typeof (this.authorData.value) != 'object') {
+        this.userService.searchUsersBySplitNameOrRegister(this.authorData.value)
           .pipe(
             finalize(() => { })
           )
           .subscribe((data) => {
-            this.usuariosEncontrados = data;
+            this.usersFound = data;
           })
       }
     });
@@ -69,25 +74,87 @@ export class WorkRegisterModalComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.formWorkRegister.valid && this.workFile && this.workImage) {
+      this.formFilling();
+      if (this.contributors.value.length > 1) {
+        this.loaderRegister = true;
+        setTimeout(() => {
+          this.registerTcc();
+        }, 1200);
+      } else {
+        this.toastService.open('Adicione os autores', ToastStyleEnum.failure);
+      }
+    } else if (!this.workFile) {
+      this.toastService.open('Adicione o PDF do trabalho', ToastStyleEnum.failure);
+    } else if (!this.workImage) {
+      this.toastService.open('Adicione uma imagem ao trabalho', ToastStyleEnum.failure);
+    }
+  }
 
+  registerTcc() {
+    this.workService.workRegister(this.formWorkRegister.value)
+      .pipe(finalize(() => {this.loaderRegister = false;}))
+      .subscribe({
+        next: () => {
+          this.saveWorkFile();
+          this.saveWorkImage();
+          this.modalRef.close();
+          this.toastService.open('Trabalho cadastrado com sucesso', ToastStyleEnum.success);
+        },
+        error: (e) => {
+          this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
+        }
+      });
+  }
+
+  saveWorkFile() {
+    this.workService.sendFile(this.formDataPdf)
+      .subscribe({
+        next: () => {
+          this.toastService.open('Trabalho inserido com sucesso', ToastStyleEnum.success);
+          this.workFile = null;
+        },
+        error: (e) => {
+          this.toastService.open('Algo deu errado ao inserir o PDF', ToastStyleEnum.failure);
+        }
+      });
+  }
+
+  saveWorkImage() {
+    this.workService.sendImage(this.formDataImage)
+    .subscribe({
+      next: () => {
+        this.workImage = null;
+      },
+      error: (e) => {
+        this.toastService.open('Algo deu errado ao inserir a imagem', ToastStyleEnum.failure);
+      }
+    });
+  }
+
+  formFilling() {
+    this.selectedUsers.push(this.authService.loggedUser);
+    this.contributors.setValue(this.selectedUsers);
+    this.rating.setValue(this.workRating);
+    this.creationDate.setValue(new Date());
   }
 
   removeContribuidor(user: string): void {
-    const index = this.exibirUsuariosSelecionados.indexOf(user);
+    const index = this.showSelectedUsers.indexOf(user);
 
     if (index >= 0) {
-      this.usuariosSelecionados.splice(index, 1);
-      this.exibirUsuariosSelecionados.splice(index, 1);
+      this.selectedUsers.splice(index, 1);
+      this.showSelectedUsers.splice(index, 1);
     }
   }
 
   inputFileChange(event) {
     if (event.target.files && event.target.files[0]) {
       if (this.validarArquivoPdf(event.target.files[0])) {
-        this.fileTcc = event.target.files[0];
-        this.formDataPdf.append('file', this.fileTcc);
+        this.workFile = event.target.files[0];
+        this.formDataPdf.append('file', this.workFile);
 
-        document.getElementById('inputFile').setAttribute("data-text", this.fileTcc.name.substring(0, 22));
+        document.getElementById('inputFile').setAttribute("data-text", this.workFile.name.substring(0, 22));
       } else {
         this.toastService.open('O arquivo deve ser do tipo PDF', ToastStyleEnum.failure);
       }
@@ -104,10 +171,10 @@ export class WorkRegisterModalComponent implements OnInit {
   inputFileImageChange(event) {
     if (event.target.files && event.target.files[0]) {
       if (this.validarArquivoPngJpeg(event.target.files[0])) {
-        this.imagemTcc = event.target.files[0];
-        this.formDataImagem.append('file', this.imagemTcc);
+        this.workImage = event.target.files[0];
+        this.formDataImage.append('file', this.workImage);
 
-        document.getElementById('inputFileImage').setAttribute("data-text", this.imagemTcc.name.substring(0, 22));
+        document.getElementById('inputFileImage').setAttribute("data-text", this.workImage.name.substring(0, 22));
       } else {
         this.toastService.open('O arquivo deve ser do tipo PNG ou JPEG', ToastStyleEnum.failure);
       }
@@ -122,10 +189,10 @@ export class WorkRegisterModalComponent implements OnInit {
   }
 
   selectedContribuidor(event: MatAutocompleteSelectedEvent): void {
-    this.usuariosSelecionados.push(event.option.value);
-    this.exibirUsuariosSelecionados.push(event.option.viewValue);
+    this.selectedUsers.push(event.option.value);
+    this.showSelectedUsers.push(event.option.viewValue);
     this.userInput.nativeElement.value = '';
-    this.dadoAutor.setValue(null);
+    this.authorData.setValue(null);
   }
 
   get title() {
