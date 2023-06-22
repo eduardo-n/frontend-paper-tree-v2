@@ -40,9 +40,12 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.formLogin.value).subscribe(
         {
           next: (data) => {
-            this.authService.setLoggedUser(data);
+            this.authService.loginUser(data);
             this.router.navigateByUrl('/');
             this.toastService.open('Bem-vindo(a)', ToastStyleEnum.success);
+            setTimeout(() => {
+              window.location.reload();
+            }, 1200);
           },
           error: (e) => {
             e.error === 1 ?

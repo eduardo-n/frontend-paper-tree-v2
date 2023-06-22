@@ -25,8 +25,12 @@ export class AuthenticationService {
     );
   }
 
-  setLoggedUser(loggedUser) {
+  loginUser(loggedUser) {
     sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('loggedUser');
   }
 
   sendTokenEmail(email: string){
