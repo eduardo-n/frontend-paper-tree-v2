@@ -19,8 +19,8 @@
   </div>
 
   <div class="bx-interactions">
-    <i [ngClass]="false ? 'fa-solid fa-heart icon active-like' : 'fa-solid fa-heart icon'"></i>
+    <i [ngClass]="likePost ? 'fa-solid fa-heart icon active-like' : 'fa-solid fa-heart icon'" (click)="interactionLike()"></i>
     <i class="fa-solid fa-download icon middle-icon"></i>
-    <i [ngClass]="false ? 'fa-solid fa-bookmark icon active-bookmark' : 'fa-solid fa-bookmark icon'"></i>
+    <i [ngClass]="savePost ? 'fa-solid fa-bookmark icon active-bookmark' : 'fa-solid fa-bookmark icon'"></i>
   </div>
 </div>

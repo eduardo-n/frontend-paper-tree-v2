@@ -1,8 +1,7 @@
 import { PostModel } from "./post.model";
 import { UserModel } from "./user.model";
 
-export interface LikeModel{
-  id: number,
+export interface LikeRequestModel{
   author: UserModel,
   post: PostModel
 }

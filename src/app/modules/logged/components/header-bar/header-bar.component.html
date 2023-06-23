@@ -12,7 +12,7 @@
         <i class="fa-solid fa-right-from-bracket btn-action" (click)="logout()"></i>
       </div>
       <div class="bx-buttons">
-        <button mat-flat-button class="btn-add" (click)="workRegisterModal()">Adicionar TCC</button>
+        <button mat-flat-button class="btn-add" *ngIf="isAdvisorUser" (click)="workRegisterModal()">Adicionar TCC</button>
         <button mat-flat-button class="btn-add-responsive">
           <i class="fa-solid fa-plus"></i>
         </button>

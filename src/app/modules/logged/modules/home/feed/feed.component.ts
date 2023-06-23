@@ -23,7 +23,7 @@ export class FeedComponent implements OnInit {
   }
 
   getPosts() {
-    this.postService.listaPostagens()
+    this.postService.listPosts()
     .subscribe({
       next: (data) => {
         this.posts = data;

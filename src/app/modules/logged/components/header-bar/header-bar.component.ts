@@ -4,6 +4,7 @@ import { WorkRegisterModalComponent } from '../../modules/home/modais/work-regis
 import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
+import { ContributorTypeEnum } from 'src/app/core/enum/contributor-type.enum';
 
 @Component({
   selector: 'app-header-bar',
@@ -47,5 +48,9 @@ export class HeaderBarComponent implements OnInit {
         window.location.reload();
       }
     });
+  }
+
+  get isAdvisorUser() {
+    return this.authService.loggedUser.contributorType === ContributorTypeEnum.ADVISOR;
   }
 }
