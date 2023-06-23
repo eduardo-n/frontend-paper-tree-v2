@@ -189,8 +189,10 @@ export class WorkRegisterModalComponent implements OnInit {
   }
 
   selectedContribuidor(event: MatAutocompleteSelectedEvent): void {
-    this.selectedUsers.push(event.option.value);
-    this.showSelectedUsers.push(event.option.viewValue);
+    if(!this.selectedUsers.find(u => u.id === event.option.value.id)) {
+      this.selectedUsers.push(event.option.value);
+      this.showSelectedUsers.push(event.option.viewValue);
+    }
     this.userInput.nativeElement.value = '';
     this.authorData.setValue(null);
   }
