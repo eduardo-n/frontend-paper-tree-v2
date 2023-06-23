@@ -17,7 +17,7 @@ export class LoggedGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       try {
-        if(this.authService.loggedUser){
+        if(sessionStorage.getItem('loggedUser')){
           return true;
         } else {
           this.router.navigateByUrl('/autenticacao');

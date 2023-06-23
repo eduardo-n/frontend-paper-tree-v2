@@ -51,6 +51,6 @@ export class HeaderBarComponent implements OnInit {
   }
 
   get isAdvisorUser() {
-    return this.authService.loggedUser.contributorType === ContributorTypeEnum.ADVISOR;
+    return this.authService.loggedUser?.contributorType === ContributorTypeEnum.ADVISOR;
   }
 }
