@@ -1,31 +1,21 @@
 <div class=" shadow post-card">
   <div class="bx-contributors">
-    <div class="circle">
-      <div class="initial-letter">E</div>
-    </div>
-    <div class="circle">
-      <div class="initial-letter">E</div>
-    </div>
-    <div class="circle">
-      <div class="initial-letter">E</div>
+    <div class="circle" *ngFor="let contributor of post.work.contributors">
+      <div class="initial-letter">{{ getFirstLetterContributorName(contributor.name) }}</div>
     </div>
     <div class="contributors-names">
-      Eduardo Nunes, Victor Paiva e Rachel Reis
+      {{ getConcatenatedNames() }}
     </div>
   </div>
 
   <div class="divider"></div>
 
   <div class="bx-description">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-      text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-      esktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <p>{{ post.work.description }}</p>
   </div>
 
   <div class="bx-image">
-    <img src="assets/images/ex-imagem2.png">
+    <img src="{{ getImageScr }}">
   </div>
 
   <div class="bx-interactions">

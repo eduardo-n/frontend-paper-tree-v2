@@ -25,7 +25,9 @@ export class HeaderBarComponent implements OnInit {
     return this.dialog.open(WorkRegisterModalComponent, {
       panelClass: 'custom-modal',
       backdropClass: 'backdrop-background'
-    });
+    }).afterClosed().subscribe(() => {
+      window.location.reload();
+    });;
   }
 
   logout() {

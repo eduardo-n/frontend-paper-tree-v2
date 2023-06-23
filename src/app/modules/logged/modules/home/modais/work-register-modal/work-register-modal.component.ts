@@ -98,8 +98,8 @@ export class WorkRegisterModalComponent implements OnInit {
         next: () => {
           this.saveWorkFile();
           this.saveWorkImage();
-          this.modalRef.close();
           this.toastService.open('Trabalho cadastrado com sucesso', ToastStyleEnum.success);
+          this.modalRef.close();
         },
         error: (e) => {
           this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
