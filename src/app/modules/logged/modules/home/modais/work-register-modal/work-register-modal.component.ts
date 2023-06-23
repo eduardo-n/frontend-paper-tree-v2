@@ -74,8 +74,10 @@ export class WorkRegisterModalComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     if (this.formWorkRegister.valid && this.workFile && this.workImage) {
       this.formFilling();
+      debugger
       if (this.contributors.value.length > 1) {
         this.loaderRegister = true;
         setTimeout(() => {

@@ -42,16 +42,19 @@ snack-bar-container {
 snack-bar-container.success-snack-bar {
   background-color: var(--succes-color);
   color: white;
+  z-index: 9999;
 }
 
 snack-bar-container.alert-snack-bar {
   background-color: var(--alert-color);
   color: white;
+  z-index: 9999;
 }
 
 snack-bar-container.failure-snack-bar {
   background-color: var(--danger-color);
   color: white;
+  z-index: 9999;
 }
 
 mat-form-field {
