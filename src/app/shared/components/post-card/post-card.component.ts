@@ -71,6 +71,7 @@ export class PostCardComponent implements OnInit {
         .pipe()
         .subscribe({
           next: () => {
+            this.post.likes.splice(this.post.likes.findIndex(like => like.id === this.likePost.id), 1);
             this.likePost = null;
           },
           error: (e) => {
@@ -82,6 +83,7 @@ export class PostCardComponent implements OnInit {
         .pipe()
         .subscribe({
           next: (data: LikeModel) => {
+            this.post.likes.push(data);
             this.likePost = data;
           },
           error: (e) => {

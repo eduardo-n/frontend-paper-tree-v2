@@ -32,6 +32,16 @@
     }
   }
 
+  .bx-title {
+    margin-bottom: 20px;
+
+    span {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-color-4);
+    }
+  }
+
   .bx-description {
     margin-bottom: 20px;
 
@@ -74,6 +84,7 @@
       color: var(--tertiary-color);
       opacity: 0.4;
       transition: 0.2s ease-out;
+      margin-right: 10px;
 
       &.active-like {
         color: var(--primary-color);
@@ -92,6 +103,7 @@
 
     .fa-bookmark {
       margin-left: auto;
+      margin-right: 0px;
     }
   }
 }

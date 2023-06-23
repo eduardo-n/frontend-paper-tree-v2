@@ -10,7 +10,7 @@
     <div class="bx-field">
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Título</mat-label>
-        <input type="text" formControlName="title" matInput class="title-form-field">
+        <input type="text" formControlName="title" matInput class="title-form-field" maxlength="250">
         <mat-error error-messages [control]="title"></mat-error>
       </mat-form-field>
     </div>
@@ -18,7 +18,7 @@
     <div class="bx-field">
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Área</mat-label>
-        <input type="text" formControlName="area" matInput class="area-form-field">
+        <input type="text" formControlName="area" matInput class="area-form-field" maxlength="250">
         <mat-error error-messages [control]="area"></mat-error>
       </mat-form-field>
     </div>
@@ -26,7 +26,7 @@
     <div class="bx-field">
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Descrição</mat-label>
-        <input type="text" formControlName="description" matInput class="description-form-field">
+        <input type="text" formControlName="description" matInput class="description-form-field" maxlength="2000">
         <mat-error error-messages [control]="description"></mat-error>
       </mat-form-field>
     </div>

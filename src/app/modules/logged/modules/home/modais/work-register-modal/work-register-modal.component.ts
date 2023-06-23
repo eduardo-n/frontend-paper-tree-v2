@@ -79,7 +79,7 @@ export class WorkRegisterModalComponent implements OnInit {
         this.formFilling();
         this.loaderRegister = true;
         setTimeout(() => {
-          this.registerTcc();
+          this.workRegister();
         }, 1200);
       } else {
         this.toastService.open('Adicione os autores', ToastStyleEnum.failure);
@@ -91,7 +91,7 @@ export class WorkRegisterModalComponent implements OnInit {
     }
   }
 
-  registerTcc() {
+  workRegister() {
     this.workService.workRegister(this.formWorkRegister.value)
       .pipe(finalize(() => {this.loaderRegister = false;}))
       .subscribe({
@@ -103,6 +103,7 @@ export class WorkRegisterModalComponent implements OnInit {
         },
         error: (e) => {
           this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
+          this.modalRef.close();
         }
       });
   }
