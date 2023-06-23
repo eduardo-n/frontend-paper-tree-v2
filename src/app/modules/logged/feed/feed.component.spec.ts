@@ -11,9 +11,7 @@ describe('FeedComponent', () => {
       declarations: [ FeedComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(FeedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

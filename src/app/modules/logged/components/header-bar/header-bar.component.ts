@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { WorkRegisterModalComponent } from '../../modules/home/modais/work-register-modal/work-register-modal.component';
 import { ConfirmationModalComponent } from 'src/app/shared/modais/confirmation-modal/confirmation-modal.component';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication-service/authentication.service';
 import { ContributorTypeEnum } from 'src/app/core/enum/contributor-type.enum';
+import { WorkRegisterModalComponent } from '../work-register-modal/work-register-modal.component';
 
 @Component({
   selector: 'app-header-bar',

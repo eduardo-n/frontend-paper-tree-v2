@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderBarComponent } from './components/header-bar/header-bar.component';
+import { FeedComponent } from './feed/feed.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -9,11 +11,11 @@ const routes: Routes = [
     children: [
       {
         path:'',
-        loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
+        component: FeedComponent
       },
       {
-        path:'**',
-        redirectTo: ''
+        path:'profile',
+        component: ProfileComponent,
       },
     ]
   }

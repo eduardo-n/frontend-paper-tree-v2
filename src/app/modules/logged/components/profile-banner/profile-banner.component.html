@@ -1,0 +1,21 @@
+<div class="bx-profile-banner">
+  <div class="bx-text">
+    <div class="letter-circle">
+      <div class="letter">{{loggedUser.name.substr(0, 1)}}</div>
+    </div>
+    <div class="banner-image"></div>
+    <div class="user-info">
+      <div class="user-name">
+        <h2>{{loggedUser.name}}</h2>
+      </div>
+      <div class="user-course">
+        <span *ngIf="loggedUser.contributorType == ContributorTypeEnum.AUTHOR">Discente do curso de {{loggedUser.course}}</span>
+        <span *ngIf="loggedUser.contributorType == ContributorTypeEnum.ADVISOR">Docente do curso de {{loggedUser.course}}</span>
+      </div>
+      <div class="user-university">
+        <span>Universidade Federal de Viçosa - Campus Rio Paranaíba</span>
+      </div>
+    </div>
+  </div>
+
+</div>
