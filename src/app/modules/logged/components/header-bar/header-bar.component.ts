@@ -50,6 +50,10 @@ export class HeaderBarComponent implements OnInit {
     });
   }
 
+  routeTo(route: string) {
+    this.router.navigateByUrl(route);
+  }
+
   get isAdvisorUser() {
     return this.authService.loggedUser?.contributorType === ContributorTypeEnum.ADVISOR;
   }
