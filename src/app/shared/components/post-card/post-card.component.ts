@@ -91,6 +91,32 @@ export class PostCardComponent implements OnInit {
     }
   }
 
+  interactionSave() {
+    if(this.savePost){
+      this.postService.removeSave(this.savePost.id)
+      .pipe()
+      .subscribe({
+        next: () => {
+          this.savePost = null;
+        },
+        error: (e) => {
+          this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
+        }
+      });
+    }else{
+      this.postService.saveWork({ author: this.authService.loggedUser, post: this.post })
+      .pipe()
+      .subscribe({
+        next: (data: SaveModel) => {
+          this.savePost = data;
+        },
+        error: (e) => {
+          this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
+        }
+      });
+    }
+  }
+
   get getImageScr() {
     return `../../../../../assets/imagem-trabalho/${this.post.work.id}.png`;
   }
