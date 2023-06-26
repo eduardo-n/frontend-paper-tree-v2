@@ -57,4 +57,8 @@ export class HeaderBarComponent implements OnInit {
   get isAdvisorUser() {
     return this.authService.loggedUser?.contributorType === ContributorTypeEnum.ADVISOR;
   }
+
+  get activeRoute(){
+    return this.router.url;
+  }
 }

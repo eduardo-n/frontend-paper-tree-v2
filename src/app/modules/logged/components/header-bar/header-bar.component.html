@@ -6,9 +6,9 @@
         <i class="fa-solid fa-seedling tree-icon"></i>
       </div>
       <div class="bx-actions">
-        <i class="fa-solid fa-house btn-action active"></i>
+        <i [ngClass]="activeRoute === '/' ? 'fa-solid fa-house btn-action active':'fa-solid fa-house btn-action'" (click)="routeTo('/')"></i>
         <!-- <i class="fa-solid fa-bell btn-action"></i> -->
-        <i class="fa-solid fa-user btn-action" (click)="routeTo('/profile')"></i>
+        <i [ngClass]="activeRoute === '/profile' ? 'fa-solid fa-user btn-action active':'fa-solid fa-user btn-action'" (click)="routeTo('/profile')"></i>
         <i class="fa-solid fa-right-from-bracket btn-action" (click)="logout()"></i>
       </div>
       <div class="bx-buttons">
