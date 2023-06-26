@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastStyleEnum } from 'src/app/core/enum/toast-style.enum';
 import { LikeModel } from 'src/app/core/models/like.model';
 import { PostModel } from 'src/app/core/models/post.model';
@@ -15,6 +15,8 @@ import { ToastService } from 'src/app/core/services/toast-service/toast.service'
 export class PostCardComponent implements OnInit {
 
   @Input() post: PostModel;
+  @Output() saveEvent: EventEmitter<any> = new EventEmitter<any>();
+
   likePost: LikeModel;
   savePost: SaveModel;
 
@@ -100,6 +102,7 @@ export class PostCardComponent implements OnInit {
       .subscribe({
         next: () => {
           this.savePost = null;
+          this.saveEvent.emit();
         },
         error: (e) => {
           this.toastService.open('Algo deu errado', ToastStyleEnum.failure);
@@ -111,6 +114,7 @@ export class PostCardComponent implements OnInit {
       .subscribe({
         next: (data: SaveModel) => {
           this.savePost = data;
+          this.saveEvent.emit();
         },
         error: (e) => {
           this.toastService.open('Algo deu errado', ToastStyleEnum.failure);

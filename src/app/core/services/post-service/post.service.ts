@@ -33,4 +33,12 @@ export class PostService {
   removeSave(saveId: number){
     return this.httpService.delete(`${environment.baseURL}saved/work/delete/${saveId}`);
   }
+
+  listPostsByUserId(idUsuario: number): Observable<PostModel[]>{
+    return this.httpService.get<PostModel[]>(`${environment.baseURL}post/user/id/${idUsuario}`);
+  }
+
+  listSavedPostsByUserId(idUsuario: number): Observable<PostModel[]>{
+    return this.httpService.get<PostModel[]>(`${environment.baseURL}post/saved/user/id/${idUsuario}`);
+  }
 }
