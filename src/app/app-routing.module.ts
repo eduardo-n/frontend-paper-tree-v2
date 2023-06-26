@@ -7,7 +7,6 @@ import { LoggedOutGuard } from './core/guards/logged-out.guard';
 const routes: Routes = [
   {
     path:'',
-    pathMatch: 'full',
     loadChildren: () => import('./modules/logged/logged.module').then(m => m.LoggedModule),
     canActivate: [LoggedGuard]
   },

@@ -10,13 +10,17 @@ const routes: Routes = [
     component: HeaderBarComponent,
     children: [
       {
-        path:'',
+        path: '',
         component: FeedComponent
       },
       {
-        path:'profile',
+        path: 'profile',
         component: ProfileComponent,
       },
+      {
+        path: '**',
+        redirectTo: ''
+      }
     ]
   }
 ];
