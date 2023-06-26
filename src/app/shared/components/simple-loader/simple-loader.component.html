@@ -1,0 +1,9 @@
+<div class="bx-simple-loader" *ngIf="show" [ngClass]="size" [ngStyle]="{'background-color': bgColor}">
+  <div class="bx-simple-loader-container">
+    <div class="bx-spinner">
+      <mat-spinner [diameter]="diameter"></mat-spinner>
+    </div>
+  </div>
+</div>
+<ng-content></ng-content>
+

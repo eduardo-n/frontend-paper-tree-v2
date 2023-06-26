@@ -1,0 +1,75 @@
+<div class="modal">
+  <div class="bx-title">
+    <i class="fa-regular fa-file-lines doc-icon"></i>
+    <span class="title">Trabalho de Conclusão de Curso</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <form [formGroup]="formWorkRegister" (ngSubmit)="onSubmit()">
+    <div class="bx-field">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Título</mat-label>
+        <input type="text" formControlName="title" matInput class="title-form-field" maxlength="250">
+        <mat-error error-messages [control]="title"></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="bx-field">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Área</mat-label>
+        <input type="text" formControlName="area" matInput class="area-form-field" maxlength="250">
+        <mat-error error-messages [control]="area"></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="bx-field">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Descrição</mat-label>
+        <input type="text" formControlName="description" matInput class="description-form-field" maxlength="2000">
+        <mat-error error-messages [control]="description"></mat-error>
+      </mat-form-field>
+    </div>
+
+    <span class="title-field">Arquivo</span>
+    <div class="file-upload-wrapper" data-text="Selecione o arquivo .pdf" id="inputFile">
+      <input (change)="inputFileChange($event)" name="file-upload-field" type="file" class="file-upload-field">
+    </div>
+
+    <span class="title-field">Imagem para postagem</span>
+    <div class="file-upload-wrapper" data-text="Selecione a imagem .png ou .jpeg" id="inputFileImage">
+      <input (change)="inputFileImageChange($event)" name="file-upload-field" type="file" class="file-upload-field">
+    </div>
+
+    <div class="bx-field">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Autores do trabalho</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let user of showSelectedUsers" (removed)="removeContribuidor(user)">
+            {{user}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input placeholder="Adicionar autor..." #userInput [formControl]="authorData" [matAutocomplete]="auto"
+            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+          <mat-error error-messages [control]="authorData"></mat-error>
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedContribuidor($event)">
+          <mat-option *ngFor="let user of usersFound" [value]="user">
+            {{user.register}} - {{user.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <span class="title-field">Avaliação</span>
+    <div class="rating">
+      <bar-rating  [(rate)]="workRating" [max]="5"></bar-rating>
+    </div>
+
+    <div class="btn-add" [app-simple-loader]="loaderRegister">
+      <button mat-flat-button>Adicionar</button>
+    </div>
+  </form>
+</div>

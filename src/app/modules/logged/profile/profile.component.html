@@ -1,0 +1,30 @@
+<div class="pg-profile">
+  <div class="profile-banner">
+    <app-profile-banner></app-profile-banner>
+  </div>
+
+  <div class="bx-posts">
+    <mat-tab-group mat-align-tabs="center" class="mat-group" animationDuration="2000ms">
+      <mat-tab label="Contribuições">
+        <div class="bx-items">
+          <div class="item-card" *ngIf="listOfContributedPosts.length < 1">
+            <app-empty-content-card></app-empty-content-card>
+          </div>
+          <div class="item-card" *ngFor="let post of listOfContributedPosts">
+            <app-post-card (saveEvent)="getListOfSavedPosts()" [post]="post"></app-post-card>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Trabalhos salvos">
+        <div class="bx-items small-box" >
+          <div class="item-card" *ngIf="listOfSavedPosts.length < 1">
+            <app-empty-content-card></app-empty-content-card>
+          </div>
+          <div class="item-card" *ngFor="let post of listOfSavedPosts">
+            <app-post-card [post]="post"></app-post-card>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

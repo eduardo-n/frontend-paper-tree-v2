@@ -1,0 +1,13 @@
+<div class="pg-authentication">
+  <div class="left-box">
+    <app-login *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.login"></app-login>
+    <app-register *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.register"></app-register>
+    <app-forgot-password *ngIf="unauthenticatedComponent === UnauthenticatedComponentsEnum.forgotPassword"></app-forgot-password>
+  </div>
+  <div class="right-box">
+    <div class="bx-info">
+      <i class="fa-solid fa-seedling tree-icon"></i>
+      <p><span>Paper Tree</span> , uma rede social para que os alunos da Universidade Federal de Viçosa publique os seus Trabalhos de Conclusão de Curso.</p>
+    </div>
+  </div>
+</div>

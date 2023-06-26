@@ -1,0 +1,70 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+
+  .bx-close-btn {
+    width: 100%;
+    display: flex;
+
+    i {
+      margin-left: auto;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--text-color);
+    }
+  }
+
+  .bx-icon {
+    margin-bottom: 20px;
+
+    i {
+      color: var(--tertiary-color);
+      font-size: 50px;
+    }
+  }
+
+  .bx-title {
+    margin-bottom: 20px;
+
+    h2 {
+      color: var(--text-color-4);
+      font-weight: 700;
+    }
+  }
+
+  .bx-text {
+    margin: 0 0 30px 0;
+
+    span {
+      color: var(--text-color-3);
+    }
+
+    .text-one {
+      margin-bottom: 20px !important;
+    }
+  }
+
+  .form-token {
+    display: flex;
+    flex-direction: column;
+
+    .btn-confirm {
+      width: 200px;
+    }
+  }
+}
+
+@media (max-width: 692px){
+  .modal {
+    width: 288px;
+  }
+}
+
+@media (max-width: 428px){
+  .modal {
+    width: 210px;
+  }
+}

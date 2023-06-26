@@ -1,0 +1,31 @@
+<div class=" shadow post-card">
+  <div class="bx-contributors">
+    <div class="circle" *ngFor="let contributor of post.work.contributors">
+      <div class="initial-letter">{{ getFirstLetterContributorName(contributor.name) }}</div>
+    </div>
+    <div class="contributors-names">
+      {{ getConcatenatedNames() }}
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="bx-title">
+    <span>{{ post.work.title }}</span>
+  </div>
+
+  <div class="bx-description">
+    <p>{{ post.work.description }}</p>
+  </div>
+
+  <div class="bx-image">
+    <img src="{{ getImageScr }}">
+  </div>
+
+  <div class="bx-interactions">
+    <i [ngClass]="likePost ? 'fa-solid fa-heart icon active-like' : 'fa-solid fa-heart icon'"
+      (click)="interactionLike()" matBadge="{{post.likes.length}}" matBadgeSize="small" matBadgeColor="accent"></i>
+    <i class="fa-solid fa-download icon middle-icon" (click)="downloadWorkFile()"></i>
+    <i [ngClass]="savePost ? 'fa-solid fa-bookmark icon active-bookmark' : 'fa-solid fa-bookmark icon'" (click)="interactionSave()"></i>
+  </div>
+</div>

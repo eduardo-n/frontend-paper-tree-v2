@@ -1,0 +1,71 @@
+.bx-register {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+
+  .bx-title {
+    width: 100%;
+    margin: 0 0 20px 0;
+
+    h1 {
+      font-weight: bold;
+    }
+  }
+
+  .form-register {
+    mat-form-field {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+
+    .bx-btns-college {
+      display: flex;
+
+      .btn-previous {
+        margin-right: 7px;
+      }
+
+      .btn-next {
+        margin-left: 7px;
+      }
+    }
+  }
+
+  .links {
+    margin-top: 20px;
+    color: var(--primary-color);
+
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+::ng-deep .mat-step-header {
+  margin-bottom: 22px;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: var(--primary-color);
+
+  span {
+    color: var(--secondary-color);
+  }
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: var(--tertiary-color);
+
+  span {
+    color: var(--primary-color);
+  }
+
+  mat-icon {
+    color: var(--primary-color);
+  }
+}
